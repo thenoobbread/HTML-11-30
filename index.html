@@ -1,0 +1,51 @@
+﻿ <!DOCTYPE html> 
+ <html>
+   <head>
+   
+	  <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+ 
+      <script type="text/javascript" language="javascript">
+ 
+        function videopanel(id) { 
+            str = '<iframe width="500" height="350" src="http://www.youtube.com/embed/' + id + '" frameborder="0" allowfullscreen></iframe>';
+            return str;
+        }
+ 
+		/// 取代原程式的jQuery("#id").bind("click touch" ...之作用 ///
+		function videochange(id) {
+			document.getElementById("player").innerHTML = videopanel(id);		
+		}
+
+      </script>
+ 
+   </head>
+   <body>
+   
+	  <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+
+			<div id="player" class="video-container" >
+			<iframe width="50%" height="400" src="http://www.youtube.com/embed/ANSI0YjVLRg" frameborder="0" allowfullscreen></iframe>
+			</div>
+
+            <br /><br />
+			
+			<div class="collection">
+			      <a class="collection-item" href='javascript:videochange("ANSI0YjVLRg")'>大學生了沒~~~Ken哥,好呷嗎</a>
+                  <a class="collection-item" href='javascript:videochange("LVk2T9gQLro")'>TVBS新聞報導HoJava(賀呷嗎)美食APP</a>
+				  <a class="collection-item" href='javascript:videochange("fiA9jlW0Qto")'>壹電視報導HoJava(賀呷嗎)美食APP</a>
+                  <a class="collection-item" href='javascript:videochange("gOk-Guchg2E")'>新唐人亞太新聞報導HoJava(賀呷嗎)美食APP</a>
+                  <a class="collection-item" href='javascript:videochange("BjZ3U97RPjg")'>TBC台中都會新聞報導HoJava(賀呷嗎)美食APP</a>
+				  <a class="collection-item" href='javascript:videochange("IEvOBoso3Xk")'>威達雲端電訊中都新聞採訪報導HoJava(賀呷嗎)美食APP</a>			
+			</div>
+			
+ 
+   </body>
+   </html>
