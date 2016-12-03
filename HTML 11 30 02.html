@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html> 
+<html> 
+<head> 
+	<title>Youtube Data API</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+</head> 
+
+
+<body> 
+	<div id="VideoThumbs"><!-- 這裡會產生YouTube Thumbs列出影片 --></div>
+	
+	<script type="text/javascript">
+		
+
+
+		var apiKey = "AIzaSyCIlwa-7d7qpKS0Nj5vhI7tb-0minC-qZ8"; //不知從何而來的Youtube API key...
+
+
+		function getVideos(pid, apiKey) {
+			// PlaylistItems: list 語法參見 https://developers.google.com/youtube/v3/docs/playlistItems/list
+			$.get("https://www.googleapis.com/youtube/v3/playlistItems", {
+				part: "snippet,contentDetails",
+				maxResults: 50,
+				playlistId: pid,
+				key: apiKey},
+				function (data) {
+					document.getElementById("VideoThumbs").innerHTML += '<div class="collection"><span class="title" style="color:red;font-weight:bold;font-size:large">============================跑跑薑餅人 Play List============================<br/><br/></span></div>';
+					// 傳回值參見 https://developers.google.com/youtube/v3/docs/playlistItems#resource-representation
+					$.each(data.items, function (i, item) {
+						var str = '<div style="float:left;font-size:medium;margin:5px;" class="collection">';
+						str += '<a href="https://youtu.be/' + item.snippet.resourceId.videoId + '" target="_blank" class="collection-item"><img src="' + item.snippet.thumbnails.medium.url + '"/><br />' + item.snippet.title + '</a><br />';
+						if (item.contentDetails.note !== undefined) str += '<a href="' + item.contentDetails.note + '" target="_blank">延伸閱讀</a><br />';
+						str += '</div>';
+						document.getElementById("VideoThumbs").innerHTML += str;
+					})
+				}
+			);
+		}
+		
+		getVideos("PLeqI78er8L_LA1CY9yp0b8J_dKN3TYTYm", apiKey)	// Youtube 播放清單的序號
+	</script>	
+</body>
+</html>
